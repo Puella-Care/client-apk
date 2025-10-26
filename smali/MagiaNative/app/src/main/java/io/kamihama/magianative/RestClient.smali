@@ -44,7 +44,7 @@
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 25
-     const-string v0, "https://walpurgisnacht.rayshift.io"
+     const-string v0, "https://dorothy.magica-us.com"
 
     iput-object v0, p0, Lio/kamihama/magianative/RestClient;->Endpoint:Ljava/lang/String;
 
@@ -405,7 +405,7 @@
 
     .line 40
     :try_start_a
-    const-string v2, "https://walpurgisnacht.rayshift.io/api/v1/endpoint"
+    const-string v2, "https://dorothy.magica-us.com/magica/api/system/native/getDomainPath"
 
     invoke-virtual {v1}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
 
