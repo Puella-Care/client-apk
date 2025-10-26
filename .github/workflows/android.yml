@@ -36,7 +36,7 @@ jobs:
       run: chmod +x ci_download_src_apk.sh ci_install_deps.sh ci_build.sh build_release.sh
     - name: Restore cached dependencies
       id: restore-cached-dependencies
-      uses: actions/cache/restore@v3
+      uses: actions/cache/restore@v4
       with:
         path: deps
         key: ${{ runner.os }}-cached-dependencies-${{ hashFiles('ci_versions/deps.sh') }}
@@ -46,13 +46,13 @@ jobs:
     - name: Save dependencies to cache
       if: steps.restore-cached-dependencies.outputs.cache-hit != 'true'
       id: save-dependencies-to-cache
-      uses: actions/cache/save@v3
+      uses: actions/cache/save@v4
       with:
         path: deps
         key: ${{ runner.os }}-cached-dependencies-${{ hashFiles('ci_versions/deps.sh') }}
     - name: Restore cached source APK
       id: restore-cached-src-apk
-      uses: actions/cache/restore@v3
+      uses: actions/cache/restore@v4
       with:
         path: |
           apk
@@ -64,7 +64,7 @@ jobs:
     - name: Save source APK to cache
       if: steps.restore-cached-src-apk.outputs.cache-hit != 'true'
       id: save-src-apk-to-cache
-      uses: actions/cache/save@v3
+      uses: actions/cache/save@v4
       with:
         path: |
           apk
