@@ -225,6 +225,13 @@ void* cocosCreateLabel(const uintptr_t* textPtr, const std::string &fontPtr, flo
             }
             return cocosCreateLabelHooked(textPtr, koruriFont, textSize, cocosSize, hAlign, vAlign);
         }
+        if (difference <= 0x600) {
+            LOGD("Setting new name font for main story.");
+            if (textSize == 16.0) {
+                textSize = 24.0;
+            }
+            return cocosCreateLabelHooked(textPtr, koruriFont, textSize, cocosSize, hAlign, vAlign);
+        }
     }
     if (storyNarrationUnitCreateLabelOffset != 0 && addr >= storyNarrationUnitCreateLabelOffset) {
         uintptr_t difference = addr - storyNarrationUnitCreateLabelOffset;
@@ -316,17 +323,17 @@ void *setPositionNew(uintptr_t label, cocos2d::Vec2 const& position) {
             //LOGD("old [name] x: %.2f, y: %.2f", position.x, position.y);
             LOGD("Moving story name.");
             if (position.x == -215.0 && position.y == 57.0) { // Left names
-                cocos2d::Vec2 newPosition = cocos2d::Vec2(-320.0, 55.0);
+                cocos2d::Vec2 newPosition = cocos2d::Vec2(-320.0, 63.0);
                 //LOGD("new l-1 x: %.2f, y: %.2f", newPosition.x, newPosition.y);
                 return setPositionHooked(label, newPosition);
             }
             else if (position.x == -55.0 && position.y == 57.0) { // Center names
-                cocos2d::Vec2 newPosition = cocos2d::Vec2(30.0, 55.0);
+                cocos2d::Vec2 newPosition = cocos2d::Vec2(30.0, 63.0);
                 //LOGD("new m-1 x: %.2f, y: %.2f", newPosition.x, newPosition.y);
                 return setPositionHooked(label, newPosition);
             }
             else if (position.x == 215.0 && position.y == 57.0) { // Right names
-                cocos2d::Vec2 newPosition = cocos2d::Vec2(320.0, 55.0);
+                cocos2d::Vec2 newPosition = cocos2d::Vec2(320.0, 63.0);
                 //LOGD("new r-1 x: %.2f, y: %.2f", newPosition.x, newPosition.y);
                 return setPositionHooked(label, newPosition);
             }
