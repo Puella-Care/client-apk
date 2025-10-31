@@ -253,9 +253,6 @@ void* cocosCreateLabel(const uintptr_t* textPtr, const std::string &fontPtr, flo
         
         if (difference >= 0x11510 && difference <= 0x11a98) {// 0x11510, 0x1173c, 0x11a98
             LOGD("Setting new scene0 AV font. Difference: %p", (void*)difference);
-            if (textSize >= 18.0 && textSize <= 23.0) {
-                textSize = 20.0;
-            }
             return cocosCreateLabelHooked(textPtr, koruriFont, textSize, cocosSize, hAlign, vAlign);
         }
     }
@@ -270,8 +267,7 @@ void* cocosCreateLabel(const uintptr_t* textPtr, const std::string &fontPtr, flo
         uintptr_t difference = storyLogUnitAddMessageOffset - addr;
         if (difference >= 0xc700 && difference <= 0xca00) { // 0xc714, 0xc9c8
             LOGD("Setting new scene0 FNarration font. Difference: %p", (void*)difference);
-            float newSize = (textSize >= 18.0 && textSize <= 23.0) ? 20.0 : textSize;
-            return cocosCreateLabelHooked(textPtr, koruriFont, newSize, cocosSize, hAlign, vAlign);
+            return cocosCreateLabelHooked(textPtr, koruriFont, textSize, cocosSize, hAlign, vAlign);
         }
     }
     return cocosCreateLabelHooked(textPtr, fontPtr, textSize, cocosSize, hAlign, vAlign);
