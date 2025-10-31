@@ -443,18 +443,34 @@ cocos2d::Size lbGetViewPositionNew(float x, float y) {
     if (storyCharaUnitonTextHomeOffset != 0 && addr >= storyCharaUnitonTextHomeOffset) {      
         if (difference <= 0x1300) {
             auto oldx = x;
-            auto oldy = y;            
-            if (x >= -130.0 && x <= -110.0) { // Homescreen single unit
+            auto oldy = y;    
+            // Homescreen        
+            if (x >= -130.0 && x <= -110.0) { // -120 = Homescreen single unit
                 x = -105.0;
             }
-            else if (x >= 30.0 && x <= 50.0) { // Homescreen dual unit
+            else if (x >= 30.0 && x <= 50.0) { // 40 = Homescreen dual unit
                 x = -120.0;
             }
-            else if (x >= 0.0 && x <= 20.0) { // Homescreen single unit, center
+            // Photo session
+            else if ((x >= 10.0 && x <= 20.0) // single
+            || (x >= 190.0 && x <= 200.0) // dual
+            || (x >= 80 && x <= 90)
+            || (x >= 110 && x <= 120)) { // Handle center positions
                 x = 25;
             }
-            else if (x >= 180.0 && x <= 200.0) { // Homescreen dual unit, center
-                x = 25;
+            else if ((x >= 170.0 && x <= 180.0)
+            || (x >= 330.0 && x <= 340)){ // Handle single unit right positions
+                x = 187;
+            } 
+            else if ((x >= -320.0 && x <= -310)
+            || (x >= -160.0 && x <= -140)){ // Handle single unit left positions
+                x = -137;
+            }
+            else if ((x >= 310.0 && x <= 320.0) 
+            || (x >= 430.0 && x <= 440.0)
+            || (x >= -50 && x <= 40)
+            || (x >= 70 && x <= 80)) { // Handle dual unit different positions
+                x = x - 167;
             }
             else if (x == -100.0) { // Dunno what's this for
                 x = -250.0;
