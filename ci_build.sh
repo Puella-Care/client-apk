@@ -14,9 +14,12 @@ unset KEYSTORE_BASE64
 unset KS_PASS
 unset KEY_PASS
 unset KS_KEY_ALIAS
-cp sign_example.sh sign.sh
-sed -E -i "s@^(\"\\\$\{APKSIGNER\}\" sign ).+( \"\\\$\{APK\}\")\$@\\1${KEYSTORE_ARGS}\\2@" sign.sh 2>&1 > /dev/null
-sed -i "s@^KEYSTORE=.*@KEYSTORE=\"${BASEDIR}/builder.jks\"@" sign.sh 2>&1 > /dev/null
+if [ ! -e sign.sh ]
+then
+  cp sign_example.sh sign.sh
+  sed -E -i "s@^(\"\\\$\{APKSIGNER\}\" sign ).+( \"\\\$\{APK\}\")\$@\\1${KEYSTORE_ARGS}\\2@" sign.sh 2>&1 > /dev/null
+  sed -i "s@^KEYSTORE=.*@KEYSTORE=\"${BASEDIR}/builder.jks\"@" sign.sh 2>&1 > /dev/null
+fi
 chmod +x sign.sh
 
 # prepare source APKs
