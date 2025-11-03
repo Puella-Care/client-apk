@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "48695978581",
-    "firebase_url": "https://kamihama-io.firebaseio.com",
-    "project_id": "kamihama-io",
-    "storage_bucket": "kamihama-io.appspot.com"
+    "project_number": "484949302043",
+    "firebase_url": "https://totentanz-9b.firebaseio.com",
+    "project_id": "totentanz-9b",
+    "storage_bucket": "totentanz-9b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:48695978581:android:bc7cc007c2de2d0e79c2dc",
+        "mobilesdk_app_id": "1:484949302043:android:9999999999999999999999",
         "android_client_info": {
           "package_name": "io.kamihama.totentanz"
         }
       },
       "oauth_client": [
         {
-          "client_id": "48695978581-l3g2vae3su7td5tilbunf8fpb1875np4.apps.googleusercontent.com",
+          "client_id": "484949302043.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -28,7 +28,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "48695978581-l3g2vae3su7td5tilbunf8fpb1875np4.apps.googleusercontent.com",
+              "client_id": "484949302043.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
