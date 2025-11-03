@@ -10,7 +10,7 @@ index 6bc2d4d..67e0489 100644
 +.field private static final ENDPOINT_URL:Ljava/lang/String; = "https://totentanz-9b.magica-us.com/backtrace"
  
 -.field private static final SUBMISSION_TOKEN:Ljava/lang/String; = "a798a9b785f35254cfee3086e38053e7597ba9a49cdcc8b0a90d64ef052786b6"
-+.field private static final SUBMISSION_TOKEN:Ljava/lang/String; = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
++.field private static final SUBMISSION_TOKEN:Ljava/lang/String; = "snaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
  
  .field private static sBacktraceClient:Lbacktraceio/library/BacktraceClient;
  
@@ -22,7 +22,7 @@ index 6bc2d4d..67e0489 100644
 +    const-string v1, "https://totentanz-9b.magica-us.com/backtrace"
  
 -    const-string v2, "a798a9b785f35254cfee3086e38053e7597ba9a49cdcc8b0a90d64ef052786b6"
-+    const-string v2, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
++    const-string v2, "snaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
  
      invoke-direct {v0, v1, v2}, Lbacktraceio/library/BacktraceCredentials;-><init>(Ljava/lang/String;Ljava/lang/String;)V
  
