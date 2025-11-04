@@ -124,11 +124,11 @@ _optimize() {
 		ext="${ext,,}"
 		echo " optimizing ${ext}: ${file}"
 		case "${ext}" in
-			png) zopflipng -y --lossy_8bit --lossy_transparent "${file}" "${file}" >/dev/null 2>&1 ;;
-			jpg|jpeg) jpegoptim --strip-all --all-progressive --quiet "${file}" >/dev/null 2>&1 ;;
-			xml|plist) xmllint --noblanks --output "${file}" "${file}" >/dev/null 2>&1 ;;
-			json|ExportJson) jq -c . "${file}" 2>/dev/null | sponge "${file}" ;;
-			so) file "${file}" | grep -q ELF && "${NDK}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip" --strip-unneeded "${file}" 2>/dev/null || true ;;
+			png) zopflipng -y --lossy_8bit --lossy_transparent "${file}" "${file}" >/dev/null 2>&1 || { echo "Failed: ${file}"; true; } ;;
+			jpg|jpeg) jpegoptim --strip-all --all-progressive --quiet "${file}" >/dev/null 2>&1 || { echo "Failed: ${file}"; true; } ;;
+			xml|plist) xmllint --noblanks --output "${file}" "${file}" >/dev/null 2>&1 || { echo "Failed: ${file}"; true; } ;;
+			json|ExportJson) cat "${file}" | jq -c . 2>/dev/null | sponge "${file}" || { echo "Failed: ${file}"; true; } ;;
+			so) file "${file}" | grep -q ELF && "${NDK}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip" --strip-unneeded "${file}" 2>/dev/null || { echo "Failed: ${file}"; true; } ;;
 		esac
 	' _ {}
 }
