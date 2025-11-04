@@ -1,4 +1,4 @@
-name: Android CI
+name: Build apk
 
 on:
   push:
@@ -28,7 +28,6 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: "3.11"
-        cache: 'pip'
     - run: pip install -r requirements.txt
     - name: Grant execute permission
       run: chmod +x ci_download_src_apk.sh ci_install_deps.sh ci_build.sh build_release.sh
@@ -57,11 +56,11 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: built_apk
+        name: totentanz
         path: ./*.apk
     - name: Prerelease Build
       if: >-
-        startsWith(github.ref, 'refs/tags/v') &&
+        startsWith(github.ref, 'refs/tags/') &&
         endsWith(github.ref, '-prerelease')
       uses: softprops/action-gh-release@v1
       with:
@@ -71,7 +70,7 @@ jobs:
           ${{ env.FAILSAFE_APK }}
     - name: Release Build
       if: >-
-        startsWith(github.ref, 'refs/tags/v') &&
+        startsWith(github.ref, 'refs/tags/') &&
         !endsWith(github.ref, '-prerelease')
       uses: softprops/action-gh-release@v1
       with:

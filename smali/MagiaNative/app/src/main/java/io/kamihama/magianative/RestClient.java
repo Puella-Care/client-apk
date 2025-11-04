@@ -37,7 +37,7 @@ public class RestClient {
         }
 
         try {
-            return postRequest(Endpoint + "/api/v1/endpoint", jsonString.toString());
+            return postRequest(Endpoint + "/magica/api/snaa", jsonString.toString());
         } catch (IOException e) {
             Log.e(LogTag, "Error with request: " + e.toString());
             return "";

@@ -122,6 +122,7 @@ _optimize() {
 		file="${1}"
 		ext="${file##*.}"
 		ext="${ext,,}"
+		echo " optimizing ${ext}: ${file}"
 		case "${ext}" in
 			png) zopflipng -y --lossy_8bit --lossy_transparent "${file}" "${file}" >/dev/null 2>&1 ;;
 			jpg|jpeg) jpegoptim --strip-all --all-progressive --quiet "${file}" >/dev/null 2>&1 ;;
