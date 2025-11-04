@@ -61,7 +61,7 @@ echo "MAIN_APK=${MAIN_APK}" >> "$GITHUB_ENV"
 
 # build failsafe APK which does not contain audiofix
 MT_AUDIOFIX_3_0_1=N "${BASEDIR}/build_release.sh" "${SRCAPK}" "${VERSION}" "${NDK}"
-FAILSAFE_APK="totentanz-{VERSION}_failsafe.apk"
+FAILSAFE_APK="totentanz-${VERSION}_failsafe.apk"
 mv "${RESULT}" "${BASEDIR}/${FAILSAFE_APK}"
 echo "FAILSAFE_APK=${FAILSAFE_APK}" >> "$GITHUB_ENV"
 
