@@ -27,7 +27,12 @@ MT_VER=$(grep -P -o "(?<=^#define MT_VERSION )\d+$" src/Config.h)
 . ci_versions/src_apk.sh
 SRCAPK="${BASEDIR}/apk/src_${SRCAPK_VER}.apk"
 export ARMV7SRCAPK="${BASEDIR}/armv7apk/armv7src_${SRCAPK_VER}.apk"
-VERSION="${SRCAPK_VER}_r${MT_VER}"
+if [[ "$GITHUB_REF" == refs/tags/* ]]
+then
+  VERSION="${GITHUB_REF#refs/tags/}_r${MT_VER}"
+else
+  VERSION="${SRCAPK_VER}_r${MT_VER}"
+fi
 
 # load deps versions
 . ci_versions/deps.sh
