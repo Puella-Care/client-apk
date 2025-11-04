@@ -117,8 +117,8 @@ _create() {
 
 _optimize() {
 	echo "Optimizing files for size..."
-	find "${BASEDIR}" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.plist' \) -print0 |
-	xargs -0 -n1 -P "$(nproc 2>/dev/null || getconf _NPROCESSORS_ONLN 2>/dev/null || echo 4)" -I{} bash -c '
+	find "${BASEDIR}/build/app" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.xml' -o -iname '*.plist' -o -iname '*.json' -o -iname '*.ExportJson' -o -iname '*.so' \) -print0 |
+	xargs -0 -P "$(nproc 2>/dev/null || getconf _NPROCESSORS_ONLN 2>/dev/null || echo 4)" -I{} bash -c '
 		file="${1}"
 		ext="${file##*.}"
 		ext="${ext,,}"
@@ -126,7 +126,9 @@ _optimize() {
 		case "${ext}" in
 			png) zopflipng -y --lossy_8bit --lossy_transparent "${file}" "${file}" >/dev/null 2>&1 ;;
 			jpg|jpeg) jpegoptim --strip-all --all-progressive --quiet "${file}" >/dev/null 2>&1 ;;
-			plist) xmllint --noblanks --output "${file}" "${file}" >/dev/null 2>&1 ;;
+			xml|plist) xmllint --noblanks --output "${file}" "${file}" >/dev/null 2>&1 ;;
+			json|ExportJson) jq -c . "${file}" 2>/dev/null | sponge "${file}" ;;
+			so) file "${file}" | grep -q ELF && "${NDK}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip" --strip-unneeded "${file}" 2>/dev/null || true
 		esac
 	' _ {}
 }
@@ -163,6 +165,7 @@ _build() {
 			-DCMAKE_BUILD_TYPE:STRING="Release" \
 			-DCMAKE_INSTALL_PREFIX:PATH="${BASEDIR}/build/${tarch}" \
 			-DCMAKE_TOOLCHAIN_FILE:FILEPATH="${NDK}/build/cmake/android.toolchain.cmake" \
+			-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE \
 			-DCMAKE_MAKE_PROGRAM:FILEPATH="${NINJA}" \
 			-DANDROID_PLATFORM="21" \
 			-DCMAKE_SYSTEM_NAME="Android" \
