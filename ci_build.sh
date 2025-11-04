@@ -27,7 +27,7 @@ MT_VER=$(grep -P -o "(?<=^#define MT_VERSION )\d+$" src/Config.h)
 . ci_versions/src_apk.sh
 SRCAPK="${BASEDIR}/apk/src_${SRCAPK_VER}.apk"
 export ARMV7SRCAPK="${BASEDIR}/armv7apk/armv7src_${SRCAPK_VER}.apk"
-VERSION="v${SRCAPK_VER}_v${MT_VER}"
+VERSION="${SRCAPK_VER}_r${MT_VER}"
 
 # load deps versions
 . ci_versions/deps.sh
@@ -50,13 +50,13 @@ RESULT="${BASEDIR}/build/io.kamihama.totentanz.${VERSION}.apk"
 
 # build main APK which contains audiofix
 MT_AUDIOFIX_3_0_1=Y "${BASEDIR}/build_release.sh" "${SRCAPK}" "${VERSION}" "${NDK}"
-MAIN_APK="MagiaTranslate_${VERSION}.apk"
+MAIN_APK="totentanz-${VERSION}.apk"
 mv "${RESULT}" "${BASEDIR}/${MAIN_APK}"
 echo "MAIN_APK=${MAIN_APK}" >> "$GITHUB_ENV"
 
 # build failsafe APK which does not contain audiofix
 MT_AUDIOFIX_3_0_1=N "${BASEDIR}/build_release.sh" "${SRCAPK}" "${VERSION}" "${NDK}"
-FAILSAFE_APK="MagiaTranslate_${VERSION}_failsafe.apk"
+FAILSAFE_APK="totentanz-{VERSION}_failsafe.apk"
 mv "${RESULT}" "${BASEDIR}/${FAILSAFE_APK}"
 echo "FAILSAFE_APK=${FAILSAFE_APK}" >> "$GITHUB_ENV"
 

@@ -10,7 +10,7 @@ APKSIGNER="${MT_APKSIGNER:-apksigner}" # ~/android-sdk/build-tools/apksigner
 #APKSIGNER="${BASEDIR}/abt/apksigner"
 
 # arg-based
-APK="${1:-${BASEDIR}/build/io.kamihama.totentanz.v0.50.apk}"
+APK="${1:-${BASEDIR}/build/io.kamihama.totentanz.0.50.apk}"
 KEYSTORE="${2:-${BASEDIR}/changeme.keystore}"
 
 _errorexit() {

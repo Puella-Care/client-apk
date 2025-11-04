@@ -556,8 +556,8 @@ void criNcv_SetHardwareSamplingRate_ANDROID(uint32_t value) {
 
 void initialization_error(const char* error) {
     LOGE("%s", error);
-    auto errorMsg = string_format("A critical error has occurred, MagiaTranslate will not work properly and may crash. Please report this error on GitHub or Discord.\n%s", error);
-    displayMessage("MagiaTranslate Error", errorMsg);
+    auto errorMsg = string_format("A critical error has occurred, Totentanz will not work properly and may crash. Please report this error on GitHub.\n%s", error);
+    displayMessage("Totentanz Error", errorMsg);
 }
 
 // Hook loop function. We run this in a separate thread so it doesn't block the main thread.
