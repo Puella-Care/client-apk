@@ -70,7 +70,6 @@ jobs:
         prerelease: true
         files: |
           ${{ env.MAIN_APK }}
-          ${{ env.FAILSAFE_APK }}
     - name: Release Build
       if: >-
         github.ref_type == 'tag' &&
@@ -80,4 +79,3 @@ jobs:
         prerelease: false
         files: |
           ${{ env.MAIN_APK }}
-          ${{ env.FAILSAFE_APK }}

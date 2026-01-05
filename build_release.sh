@@ -116,6 +116,7 @@ _create() {
 }
 
 _optimize() {
+	return
 	echo "Optimizing files for size..."
 	find "${BASEDIR}/build/app" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.xml' -o -iname '*.plist' -o -iname '*.json' -o -iname '*.ExportJson' -o -iname '*.so' \) -print0 |
 	xargs -0 -P "$(nproc 2>/dev/null || getconf _NPROCESSORS_ONLN 2>/dev/null || echo 4)" -I{} bash -c '
