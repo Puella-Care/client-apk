@@ -1,3 +1,13 @@
+# Totentanz client
+
+This is the repo for Totentanz client app. The apk file is built and released here, you can also build it yourself.
+
+This app is a fork of the MagiaTranslate client app, with additional modifications on top of it.
+
+The original readme goes below this line:
+
+<hr/>
+
 # Magia Translate
 [![Discord Chat](https://img.shields.io/discord/665980614998097941.svg)](https://discord.gg/6vncnjj)  
 This is the client source code for Magia Translate, an English translation modification for Magia Record JP. It is licenced under the MIT license.
