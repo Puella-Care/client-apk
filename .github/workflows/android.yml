@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v7
       with:
         submodules: 'recursive'
         token: ${{ secrets.PAT_TOKEN }}
@@ -28,7 +28,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Set up Python 3.11
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v6
       with:
         python-version: "3.11"
     - run: pip install -r requirements.txt
@@ -57,7 +57,7 @@ jobs:
         KEY_PASS: ${{ secrets.KEY_PASS }}
         MT_API_DOMAIN: ${{ secrets.API_DOMAIN }}
     - name: Upload artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: totentanz
         path: ./*.apk
