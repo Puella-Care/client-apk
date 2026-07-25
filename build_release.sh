@@ -150,6 +150,15 @@ _build() {
 	cp -r "${BASEDIR}/patches/unknown/" "${BASEDIR}/build/app/unknown/"
 	cp "${BASEDIR}/patches/strings.xml" "${BASEDIR}/build/app/res/values/strings.xml"
 
+	echo "Totentanzmod"
+	cp -r "${BASEDIR}/totentanz_mod/smali/"* "${BASEDIR}/build/app/smali/"
+	sed -i 's|<action android:name="android.intent.action.MAIN"/>||g' "${BASEDIR}/build/app/AndroidManifest.xml"
+	sed -i 's|<category android:name="android.intent.category.LAUNCHER"/>||g' "${BASEDIR}/build/app/AndroidManifest.xml"
+	sed -i 's|</application>|<activity android:exported="true" android:name="com.mod.installer.MainActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity></application>|' "${BASEDIR}/build/app/AndroidManifest.xml"
+	
+
+	
+
 	echo "Building libraries."
 
 	for tarch in ${TARCHS}
