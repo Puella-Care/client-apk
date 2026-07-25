@@ -196,7 +196,7 @@ _build() {
 		cp "${BASEDIR}/build/${tarch}/libuwasa.so" "${BASEDIR}/build/app/lib/${tarch}/libuwasa.so"
 	done
 
-	_optimize
+	#_optimize
 
 	echo "Rebuilding APK..."
 	${JAVA} -jar "${BASEDIR}/build/${APKTOOL}" b "${BASEDIR}/build/app/" -o "${RESULT}"
