@@ -70,6 +70,7 @@ jobs:
         prerelease: true
         files: |
           ${{ env.MAIN_APK }}
+          ${{ env.MODDABLE_APK }}
           ${{ env.FAILSAFE_APK }}
     - name: Release Build
       if: >-
@@ -80,4 +81,5 @@ jobs:
         prerelease: false
         files: |
           ${{ env.MAIN_APK }}
+          ${{ env.MODDABLE_APK }}
           ${{ env.FAILSAFE_APK }}

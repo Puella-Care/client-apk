@@ -53,11 +53,17 @@ export MT_APKSIGNER="${BUILD_TOOLS_DIR}/apksigner"
 
 RESULT="${BASEDIR}/build/io.kamihama.totentanz.${VERSION}.apk"
 
-# build main APK which contains audiofix
-MT_AUDIOFIX_3_0_1=Y "${BASEDIR}/build_release.sh" "${SRCAPK}" "${VERSION}" "${NDK}"
+# build main APK
+"${BASEDIR}/build_release.sh" "${SRCAPK}" "${VERSION}" "${NDK}"
 MAIN_APK="totentanz-${VERSION}.apk"
 mv "${RESULT}" "${BASEDIR}/${MAIN_APK}"
 echo "MAIN_APK=${MAIN_APK}" >> "$GITHUB_ENV"
+
+# build moddable APK which allows user-provided overlay from zipfile
+MT_MODDABLE=Y "${BASEDIR}/build_release.sh" "${SRCAPK}" "${VERSION}" "${NDK}"
+MODDABLE_APK="totentanz-${VERSION}_moddable.apk"
+mv "${RESULT}" "${BASEDIR}/${MODDABLE_APK}"
+echo "MODDABLE_APK=${MODDABLE_APK}" >> "$GITHUB_ENV"
 
 # build failsafe APK which does not contain audiofix
 MT_AUDIOFIX_3_0_1=N "${BASEDIR}/build_release.sh" "${SRCAPK}" "${VERSION}" "${NDK}"
